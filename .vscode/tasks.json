@@ -6,20 +6,20 @@
         {
             "label": "creatBuildDir",
             "type": "shell",
-            "command": "rm ${workspaceFolder}/../build -r; mkdir ${workspaceFolder}/../build; cd ${workspaceFolder}/../build "
+            "command": "rm ${workspaceFolder}/build -r; mkdir ${workspaceFolder}/build; cd ${workspaceFolder}/build "
         },
         {
             "label": "cmake",
             "type": "shell",
             "command": "cmake",
             "args": [
-            "-S","../",
+            "-S","../src/",
             "-B","./",
             "-G","MinGW Makefiles",
             "-DCMAKE_BUILD_TYPE=Debug"
             ],
             "options": {
-                "cwd": "${workspaceFolder}/../build"
+                "cwd": "${workspaceFolder}/build"
             },
             "dependsOn":["creatBuildDir"]
         },
@@ -28,7 +28,7 @@
             "type": "shell",
             "command": "make -j8",
             "options": {
-                "cwd": "${workspaceFolder}/../build"
+                "cwd": "${workspaceFolder}/build"
             },
             "dependsOn":["cmake"]
         },

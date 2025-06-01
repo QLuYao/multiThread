@@ -8,7 +8,7 @@
             "name": "multiThread",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/../build/MultiThread.exe",
+            "program": "${workspaceFolder}/build/MultiThread.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
