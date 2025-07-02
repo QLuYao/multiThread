@@ -1,46 +1,36 @@
 #include <iostream>
 #include <thread>
-void do_some_work();
-class background_task
-{
-private:
-    void do_something()const;
-    void do_something_else()const;
-public:
-    background_task(/* args */);
-    ~background_task();
-    void operator()()const{
-        bool test {false};
-        while (!test)
-        {
-            do_something();
-            do_something_else();
-        }
-    }
-};
+#include "threadGuard.h"
 
-background_task::background_task(/* args */)
-{
-}
+//!< 卫生间-马桶、地漏、洗手池20.
+//!< 客厅-扫地、拖地、收拾桌子、收拾地面、收拾沙发、收拾猫砂.
+//!< 厨房-收拾冰箱、收拾锅碗筷、收拾台面、收拾厨房垃圾、收拾地面.
+//!< 卧室-收拾地面、收拾床、收拾衣物、收拾桌子、收拾衣架、洗衣服\晾衣服.
+//!< 阳台-收衣服50.
 
-background_task::~background_task()
-{
-}
 
-void background_task::do_something() const
-{
-    std::cout << " do_something " << std::endl;
-}
-
-void background_task::do_something_else() const
-{
-    std::cout << " do_something_else " << std::endl;
-}
 
 int main(){
-    background_task f;
-    std::thread my_thread{f};
+    std::thread my_thread{[](){
+        bool test{false};
+        while (!test)
+        {
+            std::cout << " start thread !!!!!!!!!!!!! " << std::endl;
+        }
+    }};
+    thread_Guard thrGua(my_thread);
     my_thread.join();
-    std::cout << " end!!!!!!!!!!!!!!!! " << std::endl;
+    int a = 0;
+    int b = 0;
+    while (true)
+    {
+        if(10 < b){
+            b = 0;
+        }
+        std::cout << " main thread " << a + b <<std::endl;/* code */
+        a += b;
+        b++;
+    }
+    
     return 0;
 }
