@@ -6,7 +6,9 @@ project("MultiThread")
 set(CMAKE_BUILD_TYPE "Debug")
 #设置C++调试编译选项
 #set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -Og -Wall -g3")
-SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -g3 -Wall")
+endif()
 #加载当前目录下所有的源文件
 file(GLOB HEADFILE ${CMAKE_CURRENT_SOURCE_DIR}/*.h)
 file(GLOB SOURCEFILE ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
