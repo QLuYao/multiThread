@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "multiThread",
-            "type": "cppdbg",
+            "type": "cppdbg", //!< need install C/C++ extension.
             "request": "launch",
             "program": "${workspaceFolder}/build/MultiThread.exe",
             "args": [],
